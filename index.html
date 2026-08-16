@@ -7,21 +7,42 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Classic Background Styling with Red/Blue/Purple Glows */
+        /* Custom Background Image with Dark Overlay to make transparent boxes pop */
         body {
             background-color: #0b0f19;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(88, 28, 135, 0.25) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(30, 58, 138, 0.25) 0%, transparent 40%);
+                linear-gradient(to bottom, rgba(7, 10, 18, 0.65), rgba(7, 10, 18, 0.78)),
+                url('https://media.discordapp.net/attachments/1529106101512179893/1538411912008572948/content.png?ex=6a82953e&is=6a8143be&hm=454b0f761405b81915387badb8dc404b5c39e2d5495d12a7864bcfa7e0cad0db&=&format=webp&quality=lossless&width=1024&height=546');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #f3f4f6;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        /* Custom Glassmorphism Blur Effect */
+        /* Highly Transparent Glassmorphism Effect for Maximum Background Elevation */
         .glass-card {
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(139, 92, 246, 0.15);
+            background: rgba(11, 15, 25, 0.38);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .glass-header {
+            background: rgba(11, 15, 25, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rule-box {
+            background: rgba(11, 15, 25, 0.32);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+        }
+        .rule-box:hover {
+            background: rgba(17, 24, 39, 0.48);
+            border-color: rgba(168, 85, 247, 0.4);
+            transform: translateX(4px);
         }
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -42,22 +63,22 @@
 <body class="min-h-screen flex flex-col justify-between selection:bg-purple-600 selection:text-white">
 
     <!-- HEADER / NAVIGATION -->
-    <header class="w-full border-b border-purple-900/40 glass-card sticky top-0 z-50">
+    <header class="w-full glass-header sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <!-- Logo & Title -->
             <div class="flex items-center space-x-4">
-                <img src="https://images-ext-1.discordapp.net/external/eKOctjeDuzaoBsi0SOWlLSUFaPmegLFRRGc7rHHj6MA/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1211061571225255997/79551389075e060a8d643fb2d36d1941.png?format=webp&quality=lossless&width=640&height=640" alt="Thamizhan Roleplay Logo" class="w-12 h-12 rounded-full object-cover border-2 border-purple-500 shadow-lg shadow-purple-900/50">
-                <h1 class="text-2xl font-black tracking-wider bg-gradient-to-r from-blue-400 via-purple-400 to-red-500 bg-clip-text text-transparent drop-shadow-md">
+                <img src="https://images-ext-1.discordapp.net/external/eKOctjeDuzaoBsi0SOWlLSUFaPmegLFRRGc7rHHj6MA/%3Fsize%3D4096/https/cdn.discordapp.com/icons/1211061571225255997/79551389075e060a8d643fb2d36d1941.png?format=webp&quality=lossless&width=640&height=640" alt="Thamizhan Roleplay Logo" class="w-12 h-12 rounded-full object-cover border-2 border-purple-400 shadow-lg shadow-purple-900/50">
+                <h1 class="text-2xl font-black tracking-wider bg-gradient-to-r from-blue-400 via-purple-300 to-red-400 bg-clip-text text-transparent drop-shadow-md">
                     THAMIZHAN ROLEPLAY
                 </h1>
             </div>
 
             <!-- Back to Main / Discord Button -->
             <div class="flex items-center space-x-3">
-                <a href="https://thamizhanroleplay.github.io/main/" class="px-4 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 font-semibold text-sm transition-all border border-gray-700">
+                <a href="https://thamizhanroleplay.github.io/main/" class="px-4 py-2 rounded-xl bg-gray-900/60 hover:bg-gray-800/80 text-gray-200 font-semibold text-sm transition-all border border-white/10 backdrop-blur-md">
                     &larr; Home
                 </a>
-                <a href="https://discord.gg/3ew5s2d665" target="_blank" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all">
+                <a href="https://discord.gg/3ew5s2d665" target="_blank" class="px-5 py-2 rounded-xl bg-red-600/90 hover:bg-red-600 text-white font-bold text-sm shadow-lg shadow-red-600/30 transition-all backdrop-blur-md border border-red-500/30">
                     Join Discord
                 </a>
             </div>
@@ -66,68 +87,68 @@
 
     <!-- MAIN CONTENT CONTAINER -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow w-full">
-        <div class="glass-card rounded-2xl p-6 sm:p-12 shadow-2xl relative overflow-hidden border border-purple-500/20 space-y-8">
+        <div class="glass-card rounded-2xl p-6 sm:p-12 shadow-2xl relative overflow-hidden space-y-8">
             
             <!-- Title Header -->
-            <div class="border-b border-gray-800 pb-6 text-center sm:text-left">
+            <div class="border-b border-white/10 pb-6 text-center sm:text-left">
                 <h2 class="text-3xl sm:text-4xl font-extrabold text-white flex items-center justify-center sm:justify-start space-x-3">
                     <span>🇮🇳</span>
-                    <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">THAMIZHAN ROLEPLAY</span>
+                    <span class="bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent drop-shadow">THAMIZHAN ROLEPLAY</span>
                 </h2>
-                <p class="text-purple-300 font-semibold mt-2 tracking-wide uppercase text-sm sm:text-base">📜 City Rules & Roleplay Guidelines</p>
+                <p class="text-purple-200 font-semibold mt-2 tracking-wide uppercase text-sm sm:text-base drop-shadow">📜 City Rules & Roleplay Guidelines</p>
             </div>
 
             <!-- Warning Banner -->
-            <div class="bg-red-950/40 border-l-4 border-red-600 p-4 rounded-r-xl text-red-200 text-sm leading-relaxed">
+            <div class="bg-red-950/40 border-l-4 border-red-500 p-4 rounded-r-xl text-red-100 text-sm leading-relaxed backdrop-blur-md border-t border-b border-r border-red-500/20 shadow-lg">
                 ⚠️ <strong>All citizens are expected to follow these rules.</strong> Failure to follow the rules may result in a <strong>warning, jail, kick, or ban</strong> depending on the severity of the violation.
             </div>
 
             <!-- Rules List -->
             <div class="space-y-6">
                 <!-- 01. RDM -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">01. 🔫 RDM — Random Deathmatch</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Killing another player without a valid <strong>IC (In-Character)</strong> reason or proper roleplay is strictly prohibited.</p>
-                    <p class="mt-3 text-xs text-red-400 font-medium">Punishment: Warning, punishment, or ban depending on the situation.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">01. 🔫 RDM — Random Deathmatch</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Killing another player without a valid <strong>IC (In-Character)</strong> reason or proper roleplay is strictly prohibited.</p>
+                    <p class="mt-3 text-xs text-red-300 font-medium drop-shadow">Punishment: Warning, punishment, or ban depending on the situation.</p>
                 </div>
 
                 <!-- 02. VDM -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">02. 🚗 VDM — Vehicle Deathmatch</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Using a vehicle intentionally to run over, hit, or kill another player without valid roleplay justification is prohibited.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">02. 🚗 VDM — Vehicle Deathmatch</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Using a vehicle intentionally to run over, hit, or kill another player without valid roleplay justification is prohibited.</p>
                 </div>
 
                 <!-- 03. Metagaming -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">03. 🧠 METAGAMING</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Using information obtained <strong>OOC (Out of Character)</strong> that your character could not realistically know in an IC situation is prohibited.</p>
-                    <div class="mt-3 p-3 bg-purple-950/30 rounded-lg border border-purple-900/30 text-xs text-purple-200">
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">03. 🧠 METAGAMING</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Using information obtained <strong>OOC (Out of Character)</strong> that your character could not realistically know in an IC situation is prohibited.</p>
+                    <div class="mt-3 p-3 bg-black/30 rounded-lg border border-white/10 text-xs text-purple-200 backdrop-blur-sm">
                         <strong>Example:</strong> Using information from Discord, streams, or another player's OOC conversation inside the city.
                     </div>
                 </div>
 
                 <!-- 04. Powergaming -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">04. ⚡ POWERGAMING</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Using game mechanics, unrealistic advantages, or actions that would not be possible in realistic roleplay to gain an unfair advantage is prohibited.</p>
-                    <div class="mt-3 p-3 bg-purple-950/30 rounded-lg border border-purple-900/30 text-xs text-purple-200">
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">04. ⚡ POWERGAMING</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Using game mechanics, unrealistic advantages, or actions that would not be possible in realistic roleplay to gain an unfair advantage is prohibited.</p>
+                    <div class="mt-3 p-3 bg-black/30 rounded-lg border border-white/10 text-xs text-purple-200 backdrop-blur-sm">
                         <strong>Example:</strong> Performing unrealistic actions simply because the game mechanics allow you to do so.
                     </div>
                 </div>
 
                 <!-- 05. NLR -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">05. 🕊️ NLR — NEW LIFE RULE</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">After respawning or dying, you must treat your previous life as forgotten.</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">You must not return to the previous situation, remember the events surrounding your death, or use information from your previous life.</p>
-                    <p class="mt-3 text-xs text-yellow-400 font-medium">NLR duration: 30 minutes.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">05. 🕊️ NLR — NEW LIFE RULE</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">After respawning or dying, you must treat your previous life as forgotten.</p>
+                    <p class="text-gray-200 text-sm leading-relaxed mt-2">You must not return to the previous situation, remember the events surrounding your death, or use information from your previous life.</p>
+                    <p class="mt-3 text-xs text-yellow-300 font-medium drop-shadow">NLR duration: 30 minutes.</p>
                 </div>
 
                 <!-- 06. Revenge RP -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">06. ⚔️ REVENGE ROLEPLAY</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-3">Revenge RP is permitted only when there is a valid IC reason.</p>
-                    <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">06. ⚔️ REVENGE ROLEPLAY</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed mb-3">Revenge RP is permitted only when there is a valid IC reason.</p>
+                    <ul class="list-disc list-inside text-sm text-gray-200 space-y-1">
                         <li>Revenge must be roleplayed within <strong>2 days</strong> of the original incident.</li>
                         <li>The revenge must remain completely <strong>IC</strong>.</li>
                         <li>Offensive, abusive, or personal language is not permitted.</li>
@@ -136,136 +157,136 @@
                 </div>
 
                 <!-- 07. Combat Logging -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">07. 🚪 COMBAT LOGGING</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Leaving the server while involved in an active RP situation, chase, fight, arrest, robbery, or other scenario is strictly prohibited.</p>
-                    <p class="mt-2 text-xs text-gray-400">If you experience a genuine technical issue, inform the staff team as soon as possible.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">07. 🚪 COMBAT LOGGING</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Leaving the server while involved in an active RP situation, chase, fight, arrest, robbery, or other scenario is strictly prohibited.</p>
+                    <p class="mt-2 text-xs text-gray-300">If you experience a genuine technical issue, inform the staff team as soon as possible.</p>
                 </div>
 
                 <!-- 08. Respect & Harassment -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">08. 🤝 RESPECT & HARASSMENT</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Every player must be treated with respect both <strong>IC and OOC</strong>.</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">Discrimination, harassment, personal attacks, or insulting another player based on gender or identity will not be tolerated.</p>
-                    <p class="mt-3 text-xs text-green-400 font-semibold">Respect everyone. No exceptions.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">08. 🤝 RESPECT & HARASSMENT</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Every player must be treated with respect both <strong>IC and OOC</strong>.</p>
+                    <p class="text-gray-200 text-sm leading-relaxed mt-2">Discrimination, harassment, personal attacks, or insulting another player based on gender or identity will not be tolerated.</p>
+                    <p class="mt-3 text-xs text-green-300 font-semibold drop-shadow">Respect everyone. No exceptions.</p>
                 </div>
 
                 <!-- 09. Cop Baiting -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">09. 👮 COP BAITING</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Purposely provoking, teasing, chasing, or unnecessarily annoying police officers just to create a police chase or force an RP situation is prohibited.</p>
-                    <p class="mt-2 text-xs text-gray-400">Police interactions must have a legitimate roleplay reason.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">09. 👮 COP BAITING</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Purposely provoking, teasing, chasing, or unnecessarily annoying police officers just to create a police chase or force an RP situation is prohibited.</p>
+                    <p class="mt-2 text-xs text-gray-300">Police interactions must have a legitimate roleplay reason.</p>
                 </div>
 
                 <!-- 10. Spawn Killing -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">10. 🏠 SPAWN KILLING</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">You may not immediately kill, attack, or kidnap a player who has just spawned or logged into the city. Allow the player reasonable time to load into the city and become active.</p>
-                    <p class="mt-3 text-xs text-yellow-400 font-medium">Recommended waiting time: 30–40 seconds. A valid RP reason is also required.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">10. 🏠 SPAWN KILLING</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">You may not immediately kill, attack, or kidnap a player who has just spawned or logged into the city. Allow the player reasonable time to load into the city and become active.</p>
+                    <p class="mt-3 text-xs text-yellow-300 font-medium drop-shadow">Recommended waiting time: 30–40 seconds. A valid RP reason is also required.</p>
                 </div>
 
                 <!-- 11. Fear RP -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">11. 😨 FEAR RP</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Your character must value their life. If you are held at gunpoint or placed in a clearly life-threatening situation, you must behave realistically and show appropriate fear.</p>
-                    <div class="mt-3 p-3 bg-purple-950/30 rounded-lg border border-purple-900/30 text-xs text-purple-200">
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">11. 😨 FEAR RP</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Your character must value their life. If you are held at gunpoint or placed in a clearly life-threatening situation, you must behave realistically and show appropriate fear.</p>
+                    <div class="mt-3 p-3 bg-black/30 rounded-lg border border-white/10 text-xs text-purple-200 backdrop-blur-sm">
                         <strong>Example:</strong> You should not casually fight someone who has a weapon pointed directly at you without a realistic reason.
                     </div>
                 </div>
 
                 <!-- 12. Cop Presence -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">12. 🚓 COP PRESENCE</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Players must roleplay as though the city has an active police presence, even when no police officers are currently online.</p>
-                    <p class="mt-2 text-xs text-gray-400">Do not assume that you can freely commit crimes simply because no PD member is visible.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">12. 🚓 COP PRESENCE</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Players must roleplay as though the city has an active police presence, even when no police officers are currently online.</p>
+                    <p class="mt-2 text-xs text-gray-300">Do not assume that you can freely commit crimes simply because no PD member is visible.</p>
                 </div>
 
                 <!-- 13. Flow RP -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">13. 🌊 FLOW RP</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Not every RP situation will go exactly as planned.</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">If another player makes a mistake or performs minor Fail RP during an ongoing scenario, continue the situation where reasonably possible instead of intentionally destroying the RP.</p>
-                    <p class="mt-3 text-xs text-gray-400">After the scenario is completed, you may report the incident to the staff team with valid evidence.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">13. 🌊 FLOW RP</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Not every RP situation will go exactly as planned.</p>
+                    <p class="text-gray-200 text-sm leading-relaxed mt-2">If another player makes a mistake or performs minor Fail RP during an ongoing scenario, continue the situation where reasonably possible instead of intentionally destroying the RP.</p>
+                    <p class="mt-3 text-xs text-gray-300">After the scenario is completed, you may report the incident to the staff team with valid evidence.</p>
                 </div>
 
                 <!-- 14. Suppressive / Warning Fire -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">14. ⚡ SUPPRESSIVE / WARNING FIRE</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Do not randomly shoot or kill players without establishing a valid RP situation.</p>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">Before initiating a shootout, players should provide a reasonable warning or escalation where the situation allows it.</p>
-                    <p class="mt-3 text-xs text-red-400 font-medium">Random shooting without RP escalation will be treated as RDM.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">14. ⚡ SUPPRESSIVE / WARNING FIRE</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Do not randomly shoot or kill players without establishing a valid RP situation.</p>
+                    <p class="text-gray-200 text-sm leading-relaxed mt-2">Before initiating a shootout, players should provide a reasonable warning or escalation where the situation allows it.</p>
+                    <p class="mt-3 text-xs text-red-300 font-medium drop-shadow">Random shooting without RP escalation will be treated as RDM.</p>
                 </div>
 
                 <!-- 15. Proper Roleplay -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">15. 🎭 PROPER ROLEPLAY</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">All players must maintain realistic and immersive roleplay. Your actions should be based on what a real person could reasonably do in the same situation.</p>
-                    <p class="mt-2 text-xs text-gray-400">Avoid unrealistic actions, unnecessary arguments, troll RP, and breaking character.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">15. 🎭 PROPER ROLEPLAY</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">All players must maintain realistic and immersive roleplay. Your actions should be based on what a real person could reasonably do in the same situation.</p>
+                    <p class="mt-2 text-xs text-gray-300">Avoid unrealistic actions, unnecessary arguments, troll RP, and breaking character.</p>
                 </div>
 
                 <!-- Safe Zones -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-blue-900/40">
-                    <h3 class="text-lg sm:text-xl font-bold text-blue-400 mb-3">🛡️ SAFE ZONES</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">Criminal activities, weapon usage, kidnapping, intentional violence, and hostile RP are prohibited inside designated Safe Zones.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-300">
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                <div class="rule-box p-5 sm:p-6 rounded-xl border border-blue-500/30">
+                    <h3 class="text-lg sm:text-xl font-bold text-blue-300 mb-3 drop-shadow">🛡️ SAFE ZONES</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed mb-4">Criminal activities, weapon usage, kidnapping, intentional violence, and hostile RP are prohibited inside designated Safe Zones.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-200">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>Police Department</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>EMS Department</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>News HQ</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>Mechanic Shed</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>Taxi Department</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>Dealerships</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>City Hall</span>
                         </div>
-                        <div class="bg-gray-950/40 p-2.5 rounded-lg border border-gray-800 flex items-center space-x-2">
+                        <div class="bg-black/30 p-2.5 rounded-lg border border-white/10 flex items-center space-x-2 backdrop-blur-sm">
                             <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                             <span>Side Job Locations</span>
                         </div>
                     </div>
-                    <p class="mt-3 text-xs text-gray-400 italic">Plus any other locations officially designated as Safe Zones by the staff team.</p>
+                    <p class="mt-3 text-xs text-gray-300 italic">Plus any other locations officially designated as Safe Zones by the staff team.</p>
                 </div>
 
                 <!-- CDM — Car Deathmatch -->
-                <div class="bg-gray-900/50 p-5 sm:p-6 rounded-xl border border-gray-800">
-                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2">🚗 CDM — CAR DEATHMATCH</h3>
-                    <p class="text-gray-300 text-sm leading-relaxed">Intentionally crashing, ramming, or repeatedly hitting another player's vehicle without a valid RP reason is considered Car Deathmatch (CDM).</p>
-                    <p class="mt-2 text-xs text-gray-400">Unnecessary vehicle collisions and using vehicles to damage or disable another player's vehicle are prohibited.</p>
+                <div class="rule-box p-5 sm:p-6 rounded-xl">
+                    <h3 class="text-lg sm:text-xl font-bold text-white mb-2 drop-shadow">🚗 CDM — CAR DEATHMATCH</h3>
+                    <p class="text-gray-200 text-sm leading-relaxed">Intentionally crashing, ramming, or repeatedly hitting another player's vehicle without a valid RP reason is considered Car Deathmatch (CDM).</p>
+                    <p class="mt-2 text-xs text-gray-300">Unnecessary vehicle collisions and using vehicles to damage or disable another player's vehicle are prohibited.</p>
                 </div>
             </div>
 
             <!-- Footer Motto Box -->
-            <div class="border-t border-gray-800 pt-6 text-center">
-                <p class="text-sm font-bold tracking-widest bg-gradient-to-r from-blue-400 via-purple-400 to-red-400 bg-clip-text text-transparent">
+            <div class="border-t border-white/15 pt-6 text-center space-y-1">
+                <p class="text-sm font-bold tracking-widest bg-gradient-to-r from-blue-400 via-purple-300 to-red-400 bg-clip-text text-transparent drop-shadow">
                     RESPECT • ROLEPLAY • REALISM
                 </p>
-                <p class="text-xs text-gray-400 mt-1">THAMIZHAN ROLEPLAY — PLAY FAIR. ROLEPLAY BETTER.</p>
+                <p class="text-xs text-gray-300 mt-1">THAMIZHAN ROLEPLAY — PLAY FAIR. ROLEPLAY BETTER.</p>
             </div>
 
         </div>
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full border-t border-purple-900/40 glass-card py-6 mt-12 text-center text-sm text-gray-400">
-        <p>&copy; 2026 Thamizhan Roleplay. All Rights Reserved.</p>
+    <footer class="w-full glass-header py-6 mt-12 text-center text-sm text-gray-300">
+        <p class="drop-shadow">&copy; 2026 Thamizhan Roleplay. All Rights Reserved.</p>
     </footer>
 
 </body>
